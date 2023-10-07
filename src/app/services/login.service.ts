@@ -5,11 +5,9 @@ import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class LoginService {
-
   private user: User | undefined | null;
 
   private loginUrl = 'http://sanger.dia.fi.upm.es/pui-rest-news/login';
@@ -17,23 +15,20 @@ export class LoginService {
   private message: string | undefined;
 
   private httpOptions = {
-    headers: new HttpHeaders()
-      .set('Content-Type', 'x-www-form-urlencoded')
+    headers: new HttpHeaders().set('Content-Type', 'x-www-form-urlencoded'),
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   isLogged() {
     return this.user != null;
   }
 
   login(name: string, pwd: string): Observable<User> {
-    const usereq = new HttpParams()
-      .set('username', name)
-      .set('passwd', pwd);
+    const usereq = new HttpParams().set('username', name).set('passwd', pwd);
 
     return this.http.post<User>(this.loginUrl, usereq).pipe(
-      tap(user => {
+      tap((user) => {
         this.user = user;
       })
     );
@@ -46,7 +41,6 @@ export class LoginService {
   logout() {
     this.user = null;
   }
-
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -61,5 +55,4 @@ export class LoginService {
       return of(result as T);
     };
   }
-
 }
