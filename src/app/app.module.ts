@@ -17,14 +17,21 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { FormsModule } from '@angular/forms';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ImageDecoderPipe } from './pipes/image-decoder.pipe';
 
 @NgModule({
-  declarations: [AppComponent, LoginFormComponent, ArticleListComponent, ImageDecoderPipe],
+  declarations: [
+    AppComponent,
+    LoginFormComponent,
+    ArticleListComponent,
+    ImageDecoderPipe,
+  ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -39,7 +46,7 @@ import { ImageDecoderPipe } from './pipes/image-decoder.pipe';
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
-    FormsModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
