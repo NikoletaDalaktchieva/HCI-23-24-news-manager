@@ -21,6 +21,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 import { FormsModule } from '@angular/forms';
 import { ArticleListComponent } from './article-list/article-list.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ImageDecoderPipe } from './pipes/image-decoder.pipe';
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ImageDecoderPipe } from './pipes/image-decoder.pipe';
     AppComponent,
     LoginFormComponent,
     ArticleListComponent,
+    NavBarComponent,
     ImageDecoderPipe,
   ],
   imports: [
