@@ -18,6 +18,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { FormsModule } from '@angular/forms';
 import { ArticleListComponent } from './article-list/article-list.component';
@@ -49,6 +50,7 @@ import { ImageDecoderPipe } from './pipes/image-decoder.pipe';
     MatSelectModule,
     MatOptionModule,
     MatGridListModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

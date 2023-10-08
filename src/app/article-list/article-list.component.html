@@ -1,24 +1,25 @@
-<mat-grid-list cols="4">
-  <mat-grid-tile *ngFor="let article of articles">
-    <mat-card class="article">
-      <mat-card-header>
-        <mat-card-title>
-          {{ article.title }}
-        </mat-card-title>
-      </mat-card-header>
-      <img
-        mat-card-image
-        [src]="article | imageDecoder"
-        class="article-header-image"
-      />
-      <mat-card-content>
-        <p>
-          {{ article.abstract }}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button>View</button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="container">
+  <mat-card *ngFor="let article of articles" class="article">
+    <mat-card-header>
+      <mat-card-title>
+        {{ article.title }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        <mat-chip> {{ article.category }}</mat-chip>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      [src]="article | imageDecoder"
+      class="article-header-image"
+    />
+    <mat-card-content>
+      <p>
+        {{ article.abstract }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button>View</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
