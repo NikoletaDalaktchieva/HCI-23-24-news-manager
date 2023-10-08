@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../interfaces/user';
 import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -11,12 +12,10 @@ export class LoginFormComponent {
   public username = '';
   public password = '';
 
-  constructor(private loginService: LoginService) {}
-
-  ngOnInit() {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   onSubmit() {
     this.loginService.login(this.username, this.password);
-    console.log(this.loginService.getUser());
+    this.router.navigate(['/']);
   }
 }
