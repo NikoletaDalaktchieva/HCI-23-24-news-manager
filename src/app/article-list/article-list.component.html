@@ -1,1 +1,4 @@
-<mat-card *ngFor="let item of articles">{{ item.title }}</mat-card>
+<mat-card *ngFor="let article of articles">
+  <mat-card-header> {{ article.title }}</mat-card-header>
+  <img mat-card-image [src]="article | imageDecoder" />
+</mat-card>
