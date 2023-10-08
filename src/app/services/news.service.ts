@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Article } from '../interfaces/article';
-import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { envConfig } from 'src/app/environment/config';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,33 +12,31 @@ export class NewsService {
   private newsUrl = 'http://sanger.dia.fi.upm.es/pui-rest-news/articles'; // URL to web api
   private articleUrl = 'http://sanger.dia.fi.upm.es/pui-rest-news/article'; // URL to web api
 
-  constructor(private http: HttpClient) {}
+  private apiKey?: string;
 
-  // Set the corresponding APIKEY accordig to the received by email
-  private APIKEY: string | undefined;
-  private APIKEY_ANON = 'xxxxxx';
+  constructor(private http: HttpClient) {}
 
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'PUIRESTAUTH apikey=' + this.APIKEY_ANON,
+      Authorization: 'PUIRESTAUTH apikey=' + envConfig.apiKey,
     }),
   };
 
   // Modifies the APIKEY with the received value
-  setUserApiKey(apikey: string) {
-    this.APIKEY = apikey;
+  setUserApiKey(apiKey: string) {
+    this.apiKey = apiKey;
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: 'PUIRESTAUTH apikey=' + this.APIKEY,
+        Authorization: 'PUIRESTAUTH apikey=' + this.apiKey,
       }),
     };
-    console.log('Apikey successfully changed ' + this.APIKEY);
+    console.log('Apikey successfully changed ' + this.apiKey);
   }
 
   setAnonymousApiKey() {
-    this.setUserApiKey(this.APIKEY_ANON);
+    this.setUserApiKey(envConfig.apiKey);
   }
 
   // Returns the list of news contain elements with the following fields:
