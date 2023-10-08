@@ -20,9 +20,10 @@ import { MatOptionModule } from '@angular/material/core';
 
 import { FormsModule } from '@angular/forms';
 import { ArticleListComponent } from './article-list/article-list.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginFormComponent, ArticleListComponent],
+  declarations: [AppComponent, LoginFormComponent, ArticleListComponent, NavBarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
