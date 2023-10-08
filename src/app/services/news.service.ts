@@ -32,7 +32,6 @@ export class NewsService {
         Authorization: 'PUIRESTAUTH apikey=' + this.apiKey,
       }),
     };
-    console.log('Apikey successfully changed ' + this.apiKey);
   }
 
   setAnonymousApiKey() {
