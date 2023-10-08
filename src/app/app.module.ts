@@ -19,14 +19,19 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 
 import { FormsModule } from '@angular/forms';
+import { ArticleListComponent } from './article-list/article-list.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginFormComponent],
+  declarations: [AppComponent, LoginFormComponent, ArticleListComponent],
   imports: [
     BrowserModule,
+
     AppRoutingModule,
+
     HttpClientModule,
+
     BrowserAnimationsModule,
+    ,
     MatToolbarModule,
     MatInputModule,
     MatCardModule,
