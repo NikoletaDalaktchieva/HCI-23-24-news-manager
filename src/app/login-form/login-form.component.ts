@@ -8,12 +8,15 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent {
-  user: User | null | undefined;
+  public username = '';
+  public password = '';
 
   constructor(private loginService: LoginService) {}
 
-  ngOnInit() {
-    this.loginService.login('Test', 'TestPass');
-    this.user = this.loginService.getUser();
+  ngOnInit() {}
+
+  onSubmit() {
+    this.loginService.login(this.username, this.password);
+    console.log(this.loginService.getUser());
   }
 }
