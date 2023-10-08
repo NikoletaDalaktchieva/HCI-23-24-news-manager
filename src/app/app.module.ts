@@ -25,13 +25,9 @@ import { ArticleListComponent } from './article-list/article-list.component';
   declarations: [AppComponent, LoginFormComponent, ArticleListComponent],
   imports: [
     BrowserModule,
-
     AppRoutingModule,
-
     HttpClientModule,
-
     BrowserAnimationsModule,
-    ,
     MatToolbarModule,
     MatInputModule,
     MatCardModule,
