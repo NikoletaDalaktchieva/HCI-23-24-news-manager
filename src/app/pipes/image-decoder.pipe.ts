@@ -8,9 +8,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ImageDecoderPipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) {}
 
-  transform(article: Article): any {
-    return this.sanitizer.bypassSecurityTrustUrl(
-      `data:${article.image_media_type};base64,${article.image_data}`
-    );
+  transform(article: Article, isThumbnail: boolean = false): any {
+    const type = isThumbnail
+      ? article.thumbnail_media_type
+      : article.image_media_type;
+    const data = isThumbnail ? article.thumbnail_data : article.image_data;
+
+    return this.sanitizer.bypassSecurityTrustUrl(`data:${type};base64,${data}`);
   }
 }

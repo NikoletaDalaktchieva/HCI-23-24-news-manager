@@ -40,10 +40,7 @@ export class NewsService {
   }
 
   getArticles(): Observable<Article[]> {
-    // return this.http.get<Article[]>(this.articleListUrl, this.httpOptions);
-    return new Observable<Article[]>((observer) =>
-      observer.next(this.articles)
-    );
+    return this.http.get<Article[]>(this.articleListUrl, this.httpOptions);
   }
 
   deleteArticle(article: Article | number): Observable<Article> {

@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { EventDispatcherService } from '../services/event-dispatcher.service';
 import { AppEvent } from '../enums/event';
 import { NewsService } from '../services/news.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,7 +13,7 @@ import { NewsService } from '../services/news.service';
 })
 export class NavBarComponent implements OnInit, OnDestroy {
   search = '';
-  isLogged = true;
+  isLogged = false;
   username = '';
 
   private subscribtions = new Subscription();
@@ -20,7 +21,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
   constructor(
     private loginService: LoginService,
     private newsService: NewsService,
-    private eventDispatcherService: EventDispatcherService
+    private eventDispatcherService: EventDispatcherService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -34,8 +36,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.eventDispatcherService.getEvent(AppEvent.LogOut)?.subscribe(() => {
       this.isLogged = false;
 
-      this.newsService.setAnonymousApiKey;
+      this.newsService.setAnonymousApiKey();
       this.username = '';
+
+      this.router.navigate(['/']);
     });
   }
 

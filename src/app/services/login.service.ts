@@ -12,6 +12,7 @@ import { AppEvent } from '../enums/event';
 })
 export class LoginService {
   private loginUrl = 'http://sanger.dia.fi.upm.es/pui-rest-news/login';
+  private loggedIn = false;
 
   constructor(
     private http: HttpClient,
@@ -23,12 +24,18 @@ export class LoginService {
 
     this.http.post<User>(this.loginUrl, usereq).subscribe({
       next: (user) => {
+        this.loggedIn = true;
         this.eventDispatcherService.dispatch(AppEvent.LogIn, user);
       },
     });
   }
 
   logout() {
+    this.loggedIn = false;
     this.eventDispatcherService.dispatch(AppEvent.LogOut);
+  }
+
+  isLoggedIn() {
+    return this.loggedIn;
   }
 }
