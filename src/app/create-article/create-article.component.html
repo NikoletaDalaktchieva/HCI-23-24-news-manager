@@ -1,23 +1,42 @@
-<form
-  [formGroup]="articleForm"
-  (ngSubmit)="saveArticle(articleForm.getRawValue())"
->
-  <mat-form-field>
-    <mat-label> Title </mat-label>
-    <input matInput formControlName="title" />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label> Category </mat-label>
-    <mat-select formControlName="category">
-      <mat-option *ngFor="let category of categories" [value]="category">
-        {{ category }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Abstract</mat-label>
-    <input matInput formControlName="title" />
-  </mat-form-field>
+<div class="container">
+  <form
+    [formGroup]="articleForm"
+    (ngSubmit)="saveArticle(articleForm.getRawValue())"
+    class="element"
+  >
+    <h1 class="header">Create:</h1>
+    <mat-form-field>
+      <mat-label> Title </mat-label>
+      <input matInput formControlName="title" required />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label> Subtitle </mat-label>
+      <input matInput formControlName="subtitle" />
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label> Category </mat-label>
+      <mat-select formControlName="category" required>
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{ category }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
 
-  <button type="submit" mat-raised-button color="primary">Create</button>
-</form>
+    <mat-form-field>
+      <mat-label>Abstract</mat-label>
+      <input matInput formControlName="abstract" required />
+    </mat-form-field>
+    <br />
+
+    <button type="submit" mat-raised-button color="primary">Create</button>
+  </form>
+
+  <div class="element" id="preview">
+    <h1 class="header">Preview:</h1>
+    <h1>{{ articleForm.get("title")?.value }}</h1>
+    <h2>text text</h2>
+  </div>
+</div>
