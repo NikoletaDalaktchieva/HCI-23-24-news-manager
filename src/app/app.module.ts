@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ImageDecoderPipe } from './pipes/image-decoder.pipe';
+import { ArticleDetailsComponent } from './article-details/article-details.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ImageDecoderPipe } from './pipes/image-decoder.pipe';
     ArticleListComponent,
     NavBarComponent,
     ImageDecoderPipe,
+    ArticleDetailsComponent,
   ],
   imports: [
     FormsModule,

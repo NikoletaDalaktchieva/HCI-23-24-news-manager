@@ -1,0 +1,12 @@
+<h1>{{ article?.title }}</h1>
+<h2>{{ article?.subtitle }}</h2>
+<h3>{{ article?.category }}</h3>
+
+<img
+  mat-card-image
+  [src]="article! | imageDecoder"
+  class="article-header-image"
+/>
+
+<h4>{{ article?.abstract }}</h4>
+<p>{{ article?.body }}</p>

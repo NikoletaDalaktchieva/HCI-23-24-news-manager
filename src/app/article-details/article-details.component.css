@@ -1,0 +1,11 @@
+* {
+  width: 100%;
+  text-align: center;
+}
+
+.article-header-image {
+  max-width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
