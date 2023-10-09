@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { User } from '../interfaces/user';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 
@@ -15,8 +14,6 @@ export class LoginFormComponent {
   constructor(private loginService: LoginService, private router: Router) {}
 
   onSubmit() {
-    console.log('Submitted');
-
     this.loginService.login(this.username, this.password).subscribe({
       next: () => this.router.navigate(['/']),
       error: () => {
