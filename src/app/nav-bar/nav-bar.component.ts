@@ -8,7 +8,12 @@ import { LoginService } from '../services/login.service';
 })
 export class NavBarComponent {
   search: String = '';
-  isLogged: Boolean = false;
+  isLogged: Boolean = true;
 
   constructor(private loginService: LoginService) {}
+
+  logout() {
+    this.loginService.logout();
+    this.isLogged = false;
+  }
 }

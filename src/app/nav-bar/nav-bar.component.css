@@ -30,6 +30,11 @@ mat-toolbar {
 ::placeholder {
   color: #d1c4e8;
 }
+
+#name {
+  font-size: 15px;
+  margin-right: 10px;
+}
 /* 
 @media screen and (min-width: 1000px) {
   #small-screen {

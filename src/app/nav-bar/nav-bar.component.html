@@ -9,13 +9,28 @@
 
   <span class="example-fill-remaining-space small-screen"></span>
 
+  <h1 id="name" *ngIf="isLogged">Hi, Niki</h1>
+
+  <button mat-icon-button [routerLink]="['/articles/create']" *ngIf="isLogged">
+    <mat-icon aria-label="add icon" fontIcon="add"></mat-icon>
+  </button>
+
   <button
-    mat-raised-button
-    color="accent"
-    *ngIf="!isLogged"
+    mat-icon-button
     [routerLink]="['/login']"
+    *ngIf="isLogged"
+    (click)="logout()"
   >
-    Log in
+    <mat-icon aria-label="logout icon" fontIcon="logout"></mat-icon>
+  </button>
+
+  <button mat-icon-button [routerLink]="['/login']" *ngIf="!isLogged">
+    <mat-icon
+      aria-hidden="false"
+      aria-label="login icon"
+      fontIcon="login"
+      [ariaSetSize]="50"
+    ></mat-icon>
   </button>
 </mat-toolbar>
 
