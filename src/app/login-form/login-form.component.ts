@@ -15,7 +15,13 @@ export class LoginFormComponent {
   constructor(private loginService: LoginService, private router: Router) {}
 
   onSubmit() {
-    this.loginService.login(this.username, this.password);
-    this.router.navigate(['/']);
+    console.log('Submitted');
+
+    this.loginService.login(this.username, this.password).subscribe({
+      next: () => this.router.navigate(['/']),
+      error: () => {
+        console.log('An error occurred while logging in!');
+      },
+    });
   }
 }

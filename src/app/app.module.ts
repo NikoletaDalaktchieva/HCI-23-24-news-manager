@@ -25,6 +25,7 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ImageDecoderPipe } from './pipes/image-decoder.pipe';
 import { CreateArticleComponent } from './create-article/create-article.component';
+import { ArticleDetailsComponent } from './article-details/article-details.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CreateArticleComponent } from './create-article/create-article.componen
     NavBarComponent,
     ImageDecoderPipe,
     CreateArticleComponent,
+    ArticleDetailsComponent,
   ],
   imports: [
     FormsModule,

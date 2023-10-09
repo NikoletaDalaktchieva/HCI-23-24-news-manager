@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class NavBarComponent {
   search: String = '';
+  isLogged: Boolean = false;
+
+  constructor(private loginService: LoginService) {}
 }
