@@ -28,7 +28,12 @@
         View
       </button>
 
-      <button *ngIf="loggedIn" class="button-action" mat-raised-button>
+      <button
+        *ngIf="loggedIn"
+        class="button-action"
+        mat-raised-button
+        routerLink="/articles/edit/{{ article.id }}"
+      >
         Edit
       </button>
 

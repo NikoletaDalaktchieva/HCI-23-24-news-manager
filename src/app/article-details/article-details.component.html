@@ -3,8 +3,9 @@
 <h3>{{ article?.category }}</h3>
 
 <img
+  *ngIf="article"
   mat-card-image
-  [src]="article! | imageDecoder"
+  [src]="article | imageDecoder"
   class="article-header-image"
 />
 

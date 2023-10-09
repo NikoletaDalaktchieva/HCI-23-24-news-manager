@@ -21,6 +21,7 @@ export class CreateArticleComponent {
     private route: ActivatedRoute
   ) {
     this.articleForm = formBuilder.group({
+      id: [null],
       title: [''],
       subtitle: [''],
       category: [''],
@@ -37,16 +38,28 @@ export class CreateArticleComponent {
 
   getArticle(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    const article = this.newsService.getArticle(id);
-    if (article != undefined) {
-      // Todo
-    }
+    this.newsService.getArticle(id).subscribe({
+      next: (article) => {
+        this.articleForm.setValue({
+          id: article.id,
+          title: article.title,
+          subtitle: article.subtitle,
+          category: article.category,
+          abstract: article.abstract,
+          body: article.body,
+        });
+      },
+    });
   }
 
   saveArticle(article: Article) {
     console.log(article);
-    // this.newsService.createArticle(article).subscribe({
-    //   next: () => this.router.navigate(['/']),
-    // });
+
+    (article.id
+      ? this.newsService.updateArticle(article)
+      : this.newsService.createArticle(article)
+    ).subscribe({
+      next: () => this.router.navigate(['/']),
+    });
   }
 }
