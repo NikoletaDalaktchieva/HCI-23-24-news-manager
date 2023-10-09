@@ -1,7 +1,7 @@
 import { Category } from '../enums/category';
 
 export interface Article {
-  id: number;
+  id?: number;
   title: string;
   subtitle?: string;
   category: Category;

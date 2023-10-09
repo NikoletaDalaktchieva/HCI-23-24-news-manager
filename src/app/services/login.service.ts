@@ -3,6 +3,7 @@ import { User } from '../interfaces/user';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { preserveWhitespacesDefault } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -25,15 +26,14 @@ export class LoginService {
   }
 
   login(name: string, pwd: string): Observable<User> {
-    // const usereq = new HttpParams().set('username', name).set('passwd', pwd);
+    const usereq = new HttpParams().set('username', name).set('passwd', pwd);
 
-    // return this.http.post<User>(this.loginUrl, usereq).pipe(
-    //   tap((user) => {
-    //     this.user = user;
-    //   })
-    // );
-    this.user = { id: 1, username: name, passwd: pwd };
-    return Observable.create();
+    return this.http.post<User>(this.loginUrl, usereq).pipe(
+      tap((user) => {
+        console.log('Set user');
+        this.user = user;
+      })
+    );
   }
 
   getUser() {

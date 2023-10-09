@@ -10,3 +10,44 @@ mat-toolbar {
        Every toolbar row uses a flexbox row layout. */
   flex: 1 1 auto;
 }
+
+.search {
+  width: 50%;
+  padding: 10px 25px 10px;
+  background: url("search-icon.png") no-repeat 5px;
+  background-size: 15px;
+  background-color: #8662c3;
+  border: transparent;
+  border-radius: 10px;
+  color: white;
+  outline: none !important;
+}
+
+.search:hover {
+  background-color: #7858af;
+}
+
+::placeholder {
+  color: #d1c4e8;
+}
+/* 
+@media screen and (min-width: 1000px) {
+  #small-screen {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #big-screen {
+    display: none;
+  }
+
+  #small-screen {
+    background-color: #683cb4;
+    text-align: center;
+  }
+
+  .search {
+    width: 85%;
+  }
+} */
