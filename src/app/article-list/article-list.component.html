@@ -3,9 +3,10 @@
     <mat-card-header>
       <mat-card-title>
         {{ article.title }}
+        <mat-chip> {{ article.category }}</mat-chip>
       </mat-card-title>
       <mat-card-subtitle>
-        <mat-chip> {{ article.category }}</mat-chip>
+        {{ article.subtitle }}
       </mat-card-subtitle>
     </mat-card-header>
     <img

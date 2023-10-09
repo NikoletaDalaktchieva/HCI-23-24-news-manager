@@ -1,5 +1,7 @@
 <mat-toolbar color="primary">
-  <span>EIT-Newspaper</span>
+  <button mat-flat-button color="primary" [routerLink]="['/']">
+    EIT-Newspaper
+  </button>
 
   <span class="example-fill-remaining-space"></span>
 
@@ -9,5 +11,7 @@
 
   <span class="example-fill-remaining-space"></span>
 
-  <button mat-raised-button color="accent">Log in</button>
+  <button mat-raised-button color="accent" [routerLink]="['/login']">
+    Log in
+  </button>
 </mat-toolbar>
