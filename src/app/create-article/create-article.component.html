@@ -1,0 +1,23 @@
+<form
+  [formGroup]="articleForm"
+  (ngSubmit)="saveArticle(articleForm.getRawValue())"
+>
+  <mat-form-field>
+    <mat-label> Title </mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label> Category </mat-label>
+    <mat-select formControlName="category">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Abstract</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button color="primary">Create</button>
+</form>

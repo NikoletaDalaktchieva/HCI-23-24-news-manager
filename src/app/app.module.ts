@@ -20,10 +20,11 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ImageDecoderPipe } from './pipes/image-decoder.pipe';
+import { CreateArticleComponent } from './create-article/create-article.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 
 @NgModule({
@@ -33,10 +34,12 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
     ArticleListComponent,
     NavBarComponent,
     ImageDecoderPipe,
+    CreateArticleComponent,
     ArticleDetailsComponent,
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
