@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { User } from '../interfaces/user';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
+import { NewsService } from '../services/news.service';
 
 @Component({
   selector: 'app-login-form',
@@ -12,13 +13,20 @@ export class LoginFormComponent {
   public username = '';
   public password = '';
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(
+    private loginService: LoginService,
+    private newsService: NewsService,
+    private router: Router
+  ) {}
 
   onSubmit() {
     console.log('Submitted');
 
     this.loginService.login(this.username, this.password).subscribe({
-      next: () => this.router.navigate(['/']),
+      next: (user) => {
+        this.newsService.setUserApiKey(user.apikey);
+        this.router.navigate(['/']);
+      },
       error: () => {
         console.log('An error occurred while logging in!');
       },
