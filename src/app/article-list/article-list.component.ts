@@ -14,4 +14,6 @@ export class ArticleListComponent {
       .getArticles()
       .subscribe({ next: (articles) => (this.articles = articles) });
   }
+
+  remove(id: number | undefined) {}
 }

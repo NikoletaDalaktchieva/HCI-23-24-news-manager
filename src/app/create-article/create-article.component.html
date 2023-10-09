@@ -3,6 +3,7 @@
     [formGroup]="articleForm"
     (ngSubmit)="saveArticle(articleForm.getRawValue())"
     class="element"
+    id="create-form"
   >
     <h1 class="header">Create:</h1>
     <mat-form-field>
@@ -29,14 +30,25 @@
       <mat-label>Abstract</mat-label>
       <input matInput formControlName="abstract" required />
     </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Body</mat-label>
+      <textarea rows="4" matInput formControlName="body"></textarea>
+    </mat-form-field>
     <br />
 
     <button type="submit" mat-raised-button color="primary">Create</button>
   </form>
 
-  <div class="element" id="preview">
+  <div class="element" id="preview-form">
     <h1 class="header">Preview:</h1>
-    <h1>{{ articleForm.get("title")?.value }}</h1>
-    <h2>text text</h2>
+
+    <div id="content">
+      <h1>{{ articleForm.get("title")?.value }}</h1>
+      <h2>{{ articleForm.get("subtitle")?.value }}</h2>
+      <h3>{{ articleForm.get("category")?.value }}</h3>
+      <h4>{{ articleForm.get("abstract")?.value }}</h4>
+      <p>{{ articleForm.get("body")?.value }}</p>
+    </div>
   </div>
 </div>

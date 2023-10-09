@@ -20,8 +20,22 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button routerLink="/articles/{{ article.id }}">
+      <button
+        class="button-action"
+        mat-raised-button
+        routerLink="/articles/{{ article.id }}"
+      >
         View
+      </button>
+
+      <button class="button-action" mat-raised-button>Edit</button>
+
+      <button
+        class="button-action"
+        mat-raised-button
+        (click)="remove(article.id)"
+      >
+        Remove
       </button>
     </mat-card-actions>
   </mat-card>

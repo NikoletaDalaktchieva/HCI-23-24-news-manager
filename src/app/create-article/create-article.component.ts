@@ -21,16 +21,19 @@ export class CreateArticleComponent {
   ) {
     this.articleForm = formBuilder.group({
       title: [''],
+      subtitle: [''],
       category: [''],
       abstract: [''],
+      body: [''],
     });
 
     this.categories = Object.values(Category);
   }
 
   saveArticle(article: Article) {
-    this.newsService.createArticle(article).subscribe({
-      next: () => this.router.navigate(['/']),
-    });
+    console.log(article);
+    // this.newsService.createArticle(article).subscribe({
+    //   next: () => this.router.navigate(['/']),
+    // });
   }
 }

@@ -3,19 +3,30 @@
   flex-wrap: wrap;
 }
 
-.element {
-  max-width: 400px;
-  margin: 10px;
-  width: 50%;
-}
-
 .header {
   color: #d1c4e8;
+  text-align: left;
 }
 
-#preview {
+#content {
+  border: 2px solid #d1c4e8;
+  border-radius: 5px;
+  min-height: 400px;
+}
+
+.element {
+  margin: 10px;
+}
+
+#preview-form {
+  width: 60%;
   border-left: solid #d1c4e8;
   padding-left: 20px;
+  text-align: center;
+}
+
+#create-form {
+  width: 30%;
 }
 
 mat-form-field {
