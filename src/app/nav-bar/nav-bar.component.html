@@ -15,12 +15,7 @@
     <mat-icon aria-label="add icon" fontIcon="add"></mat-icon>
   </button>
 
-  <button
-    mat-icon-button
-    [routerLink]="['/login']"
-    *ngIf="isLogged"
-    (click)="logout()"
-  >
+  <button mat-icon-button *ngIf="isLogged" (click)="logout()">
     <mat-icon aria-label="logout icon" fontIcon="logout"></mat-icon>
   </button>
 
