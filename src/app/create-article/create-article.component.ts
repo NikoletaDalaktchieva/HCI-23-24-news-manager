@@ -15,6 +15,7 @@ export class CreateArticleComponent {
   articleForm: FormGroup;
   categories: Category[];
   imageName = '';
+  isUpdate = false;
 
   constructor(
     private router: Router,
@@ -52,9 +53,11 @@ export class CreateArticleComponent {
           category: article.category,
           abstract: article.abstract,
           body: article.body,
-          image_data: [null],
-          image_media_type: [null],
+          image_data: article.image_data,
+          image_media_type: article.image_media_type,
         });
+        this.imageName = article.image_data ? 'Uploaded image' : '';
+        this.isUpdate = true;
       },
     });
   }
@@ -66,9 +69,13 @@ export class CreateArticleComponent {
     ).subscribe({
       next: () => {
         this.router.navigate(['/']);
-        this.snackBar.open(`Article created: ${article.title}`, '', {
-          duration: 3000,
-        });
+        this.snackBar.open(
+          `Article ${this.isUpdate ? 'updated' : 'created'}: ${article.title}`,
+          '',
+          {
+            duration: 3000,
+          }
+        );
       },
     });
   }

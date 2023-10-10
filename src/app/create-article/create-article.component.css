@@ -40,3 +40,10 @@ mat-form-field {
 .upload-button {
   margin-bottom: 20px;
 }
+
+.article-header-image {
+  max-width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

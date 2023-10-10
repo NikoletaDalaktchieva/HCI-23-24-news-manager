@@ -5,7 +5,7 @@
     class="element"
     id="create-form"
   >
-    <h1 class="header">Create:</h1>
+    <h1 class="header">{{ isUpdate ? "Update" : "Create" }}:</h1>
     <mat-form-field>
       <mat-label> Title </mat-label>
       <input matInput formControlName="title" required />
@@ -59,7 +59,7 @@
       color="primary"
       [disabled]="!articleForm.valid"
     >
-      Save
+      {{ isUpdate ? "Update" : "Create" }}
     </button>
     <button
       type="submit"
@@ -78,8 +78,12 @@
       <h1>{{ articleForm.get("title")?.value }}</h1>
       <h2>{{ articleForm.get("subtitle")?.value }}</h2>
       <h3>{{ articleForm.get("category")?.value }}</h3>
-      <h4>{{ articleForm.get("abstract")?.value }}</h4>
-      <p>{{ articleForm.get("body")?.value }}</p>
+      <img
+        [src]="articleForm.getRawValue() | imageDecoder"
+        class="article-header-image"
+      />
+      <h4 [innerHTML]="articleForm.get('abstract')?.value"></h4>
+      <p [innerHTML]="articleForm.get('body')?.value"></p>
     </div>
   </div>
 </div>
