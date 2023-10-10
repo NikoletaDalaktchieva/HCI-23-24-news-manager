@@ -1,3 +1,24 @@
+<form class="search-form">
+  <mat-form-field class="search-field">
+    <mat-label>Search by Article title</mat-label>
+    <input
+      class="search-input"
+      type="text"
+      matInput
+      [formControl]="myControl"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option
+        *ngFor="let option of filteredOptions | async"
+        [value]="option"
+      >
+        {{ option.title }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
 <div class="container">
   <mat-card *ngFor="let article of articles" class="article">
     <mat-card-header>
