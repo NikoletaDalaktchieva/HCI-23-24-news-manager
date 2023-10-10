@@ -37,9 +37,7 @@
       class="article-header-image"
     />
     <mat-card-content>
-      <p>
-        {{ article.abstract }}
-      </p>
+      <p [innerHTML]="article.abstract"></p>
     </mat-card-content>
     <mat-card-actions>
       <button
