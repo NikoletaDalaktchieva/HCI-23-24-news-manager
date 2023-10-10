@@ -35,6 +35,8 @@ mat-toolbar {
   font-size: 15px;
   margin-right: 10px;
 }
+
+/* TODO remove */
 /* 
 @media screen and (min-width: 1000px) {
   #small-screen {

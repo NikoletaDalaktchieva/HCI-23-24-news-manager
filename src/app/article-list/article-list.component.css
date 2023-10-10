@@ -24,9 +24,7 @@
 .search-form {
   max-width: 500px;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
+  margin: 10px;
 }
 
 .search-field {
@@ -34,5 +32,11 @@
 }
 
 .category-chips {
-  margin: 20px;
+  margin: 15px;
+}
+
+.container-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

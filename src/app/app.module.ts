@@ -21,6 +21,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleListComponent } from './article-list/article-list.component';
@@ -30,6 +31,7 @@ import { CreateArticleComponent } from './create-article/create-article.componen
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { DeleteArticleComponent } from './delete-article/delete-article.component';
 import { CategoryPipe } from './pipes/category.pipe';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { CategoryPipe } from './pipes/category.pipe';
     ArticleDetailsComponent,
     DeleteArticleComponent,
     CategoryPipe,
+    SearchFilterPipe,
   ],
   imports: [
     FormsModule,
@@ -64,6 +67,7 @@ import { CategoryPipe } from './pipes/category.pipe';
     MatChipsModule,
     MatAutocompleteModule,
     MatDialogModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

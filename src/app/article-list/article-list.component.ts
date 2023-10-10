@@ -22,6 +22,7 @@ export class ArticleListComponent implements OnInit, OnDestroy {
   public articles: Article[] = [];
   public selectedCategory?: Category;
   categories: Category[];
+  searchText: string = '';
 
   private subscriptions = new Subscription();
 
@@ -93,10 +94,11 @@ export class ArticleListComponent implements OnInit, OnDestroy {
   }
 
   private _filter(title: string): Article[] {
+    console.log(title);
     const filterValue = title.toLowerCase();
 
     return this.articles.filter((option) =>
-      option.title.toLowerCase().includes(filterValue)
+      option.title.toLowerCase().includes(filterValue.toLowerCase())
     );
   }
 
