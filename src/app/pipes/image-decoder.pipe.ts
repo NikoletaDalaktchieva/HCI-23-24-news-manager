@@ -12,7 +12,7 @@ export class ImageDecoderPipe implements PipeTransform {
     const type = isThumbnail
       ? article.thumbnail_media_type
       : article.image_media_type;
-    const data = isThumbnail ? article.thumbnail_data : article.image_data;
+    const data = isThumbnail ? article.thumbnail_image : article.image_data;
 
     return this.sanitizer.bypassSecurityTrustUrl(`data:${type};base64,${data}`);
   }

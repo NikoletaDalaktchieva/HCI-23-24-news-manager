@@ -31,7 +31,7 @@
       </mat-card-subtitle>
     </mat-card-header>
     <img
-      *ngIf="article.thumbnail_data"
+      *ngIf="article.thumbnail_image"
       mat-card-image
       [src]="article | imageDecoder : true"
       class="article-header-image"

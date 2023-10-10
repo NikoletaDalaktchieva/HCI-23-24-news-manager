@@ -20,6 +20,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleListComponent } from './article-list/article-list.component';
@@ -60,6 +61,7 @@ import { DeleteArticleComponent } from './delete-article/delete-article.componen
     MatGridListModule,
     MatChipsModule,
     MatAutocompleteModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

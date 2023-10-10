@@ -8,6 +8,8 @@ import { AppEvent } from '../enums/event';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteArticleComponent } from '../delete-article/delete-article.component';
 
 @Component({
   selector: 'app-article-list',
@@ -23,7 +25,8 @@ export class ArticleListComponent implements OnInit, OnDestroy {
   constructor(
     private newsService: NewsService,
     private loginService: LoginService,
-    private eventDispatcher: EventDispatcherService
+    private eventDispatcher: EventDispatcherService,
+    private dialog: MatDialog
   ) {
     this.loggedIn = this.loginService.isLoggedIn();
     this.updateArticles();
@@ -40,12 +43,23 @@ export class ArticleListComponent implements OnInit, OnDestroy {
         .getEvent(AppEvent.LogOut)
         ?.subscribe(() => this.updateArticles())
     );
+
+    this.subscriptions.add(
+      this.eventDispatcher
+        .getEvent(AppEvent.ArticleDeleted)
+        ?.subscribe(() => this.updateArticles())
+    );
   }
 
   delete(article: Article) {
-    this.newsService.deleteArticle(article).subscribe({
-      next: () => this.updateArticles(),
+    const dialogRef = this.dialog.open(DeleteArticleComponent, {
+      data: article,
     });
+
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log('The dialog was closed');
+    //   this.animal = result;
+    // });
   }
 
   private updateArticles() {
