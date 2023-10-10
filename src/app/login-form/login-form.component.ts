@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { AppEvent } from '../enums/event';
 import { EventDispatcherService } from '../services/event-dispatcher.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login-form',
@@ -20,7 +21,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     private loginService: LoginService,
     private eventDispatcherService: EventDispatcherService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -31,6 +33,11 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.eventDispatcherService.getEvent(AppEvent.LogIn)?.subscribe({
       next: () => this.router.navigate(['/']),
+      error: () =>
+        //TODO not working
+        this.snackBar.open('Wrong username or password', '', {
+          duration: 3000,
+        }),
     });
   }
 

@@ -4,6 +4,7 @@ import { Article } from '../interfaces/article';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Category } from '../enums/category';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-article',
@@ -18,7 +19,8 @@ export class CreateArticleComponent {
     private router: Router,
     private formBuilder: FormBuilder,
     private newsService: NewsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {
     this.articleForm = formBuilder.group({
       id: [null],
@@ -59,7 +61,12 @@ export class CreateArticleComponent {
       ? this.newsService.updateArticle(article)
       : this.newsService.createArticle(article)
     ).subscribe({
-      next: () => this.router.navigate(['/']),
+      next: () => {
+        this.router.navigate(['/']);
+        this.snackBar.open('Article created: ' + article.title, '', {
+          duration: 3000,
+        });
+      },
     });
   }
 }
