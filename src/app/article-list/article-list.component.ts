@@ -8,6 +8,7 @@ import { AppEvent } from '../enums/event';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { Category } from '../enums/category';
 
 @Component({
   selector: 'app-article-list',
@@ -17,6 +18,8 @@ import { map, startWith } from 'rxjs/operators';
 export class ArticleListComponent implements OnInit, OnDestroy {
   public loggedIn: boolean;
   public articles: Article[] = [];
+  public selectedCategory?: Category;
+  categories: Category[];
 
   private subscriptions = new Subscription();
 
@@ -27,6 +30,7 @@ export class ArticleListComponent implements OnInit, OnDestroy {
   ) {
     this.loggedIn = this.loginService.isLoggedIn();
     this.updateArticles();
+    this.categories = Object.values(Category);
   }
 
   ngOnInit() {
@@ -85,5 +89,9 @@ export class ArticleListComponent implements OnInit, OnDestroy {
     return this.articles.filter((option) =>
       option.title.toLowerCase().includes(filterValue)
     );
+  }
+
+  changeCategory(category: Category) {
+    this.selectedCategory = category;
   }
 }
