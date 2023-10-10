@@ -19,6 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleListComponent } from './article-list/article-list.component';
@@ -56,6 +57,7 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
     MatOptionModule,
     MatGridListModule,
     MatChipsModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

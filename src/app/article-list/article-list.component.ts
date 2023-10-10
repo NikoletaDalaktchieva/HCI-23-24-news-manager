@@ -5,6 +5,9 @@ import { LoginService } from '../services/login.service';
 import { EventDispatcherService } from '../services/event-dispatcher.service';
 import { Subscription } from 'rxjs';
 import { AppEvent } from '../enums/event';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-article-list',
@@ -27,6 +30,11 @@ export class ArticleListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.loadArtciles();
+    this.filterInit();
+  }
+
+  loadArtciles() {
     this.subscriptions.add(
       this.eventDispatcher
         .getEvent(AppEvent.LogOut)
@@ -44,5 +52,31 @@ export class ArticleListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
+  }
+
+  // Seatch filtering by title
+  myControl = new FormControl<string | Article>('');
+  filteredOptions?: Observable<Article[]>;
+
+  filterInit() {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map((value) => {
+        const title = typeof value === 'string' ? value : value?.title;
+        return title ? this._filter(title as string) : this.articles.slice();
+      })
+    );
+  }
+
+  displayFn(article: Article): string {
+    return article && article.title ? article.title : '';
+  }
+
+  private _filter(title: string): Article[] {
+    const filterValue = title.toLowerCase();
+
+    return this.articles.filter((option) =>
+      option.title.toLowerCase().includes(filterValue)
+    );
   }
 }
