@@ -1,31 +1,43 @@
-<form class="search-form">
-  <mat-form-field class="search-field">
-    <mat-label>Search by Article title</mat-label>
-    <input
-      class="search-input"
-      type="text"
-      matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
-    />
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-      <mat-option
-        *ngFor="let option of filteredOptions | async"
-        [value]="option"
-      >
-        {{ option.title }}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form>
+<div>
+  <mat-chip-listbox aria-label="Category">
+    <mat-chip-option>All</mat-chip-option>
+    <mat-chip-option *ngFor="let article of articles">{{
+      article.category
+    }}</mat-chip-option>
+  </mat-chip-listbox>
+
+  <form class="search-form">
+    <mat-form-field class="search-field">
+      <mat-label>Search by Article title</mat-label>
+      <input
+        class="search-input"
+        type="text"
+        matInput
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option
+          *ngFor="let option of filteredOptions | async"
+          [value]="option"
+        >
+          {{ option.title }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</div>
 
 <div class="container">
   <mat-card *ngFor="let article of articles" class="article">
     <mat-card-header>
-      <mat-card-title>
+      <mat-card-title
+        routerLink="/articles/{{ article.id }}"
+        style="cursor: pointer"
+      >
         {{ article.title }}
-        <mat-chip> {{ article.category }}</mat-chip>
       </mat-card-title>
+      <mat-chip> {{ article.category }}</mat-chip>
       <mat-card-subtitle>
         {{ article.subtitle }}
       </mat-card-subtitle>
@@ -34,6 +46,8 @@
       mat-card-image
       [src]="article | imageDecoder : true"
       class="article-header-image"
+      routerLink="/articles/{{ article.id }}"
+      style="cursor: pointer"
     />
     <mat-card-content>
       <p>
