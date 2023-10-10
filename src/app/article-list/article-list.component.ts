@@ -105,4 +105,7 @@ export class ArticleListComponent implements OnInit, OnDestroy {
   changeCategory(category: Category) {
     this.selectedCategory = category;
   }
+  setSearchText(article: Article) {
+    this.searchText = article.title;
+  }
 }

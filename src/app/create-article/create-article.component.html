@@ -9,6 +9,7 @@
     <mat-form-field>
       <mat-label> Title </mat-label>
       <input matInput formControlName="title" required />
+      <mat-error> "Title" is a required field </mat-error>
     </mat-form-field>
     <br />
     <mat-form-field>
@@ -22,6 +23,7 @@
         <mat-option *ngFor="let category of categories" [value]="category">
           {{ category }}
         </mat-option>
+        <mat-error> "Category" is a required field </mat-error>
       </mat-select>
     </mat-form-field>
 
@@ -41,6 +43,7 @@
     <mat-form-field>
       <mat-label>Abstract</mat-label>
       <input matInput formControlName="abstract" required />
+      <mat-error> "Abstract" is a required field </mat-error>
     </mat-form-field>
 
     <mat-form-field>
@@ -49,7 +52,13 @@
     </mat-form-field>
     <br />
 
-    <button type="submit" class="button" mat-raised-button color="primary">
+    <button
+      type="submit"
+      class="button"
+      mat-raised-button
+      color="primary"
+      [disabled]="!articleForm.valid"
+    >
       Save
     </button>
     <button

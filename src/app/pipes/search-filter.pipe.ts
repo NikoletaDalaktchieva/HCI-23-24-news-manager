@@ -3,6 +3,7 @@ import { Article } from '../interfaces/article';
 
 @Pipe({
   name: 'searchFilter',
+  pure: false,
 })
 export class SearchFilterPipe implements PipeTransform {
   transform(article: Article[], filterText: string): Article[] {

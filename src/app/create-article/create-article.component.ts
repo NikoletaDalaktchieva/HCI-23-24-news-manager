@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NewsService } from '../services/news.service';
 import { Article } from '../interfaces/article';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Category } from '../enums/category';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -25,10 +25,10 @@ export class CreateArticleComponent {
   ) {
     this.articleForm = this.formBuilder.group({
       id: [null],
-      title: [''],
+      title: ['', Validators.required],
       subtitle: [''],
-      category: [''],
-      abstract: [''],
+      category: ['', Validators.required],
+      abstract: ['', Validators.required],
       body: [''],
       image_data: [null],
       image_media_type: [null],
