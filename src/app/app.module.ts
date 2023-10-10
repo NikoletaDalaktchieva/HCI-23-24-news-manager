@@ -29,6 +29,7 @@ import { ImageDecoderPipe } from './pipes/image-decoder.pipe';
 import { CreateArticleComponent } from './create-article/create-article.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { DeleteArticleComponent } from './delete-article/delete-article.component';
+import { CategoryPipe } from './pipes/category.pipe';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { DeleteArticleComponent } from './delete-article/delete-article.componen
     CreateArticleComponent,
     ArticleDetailsComponent,
     DeleteArticleComponent,
+    CategoryPipe,
   ],
   imports: [
     FormsModule,

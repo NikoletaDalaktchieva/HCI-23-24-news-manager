@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteArticleComponent } from '../delete-article/delete-article.component';
+import { Category } from '../enums/category';
 
 @Component({
   selector: 'app-article-list',
@@ -19,6 +20,8 @@ import { DeleteArticleComponent } from '../delete-article/delete-article.compone
 export class ArticleListComponent implements OnInit, OnDestroy {
   public loggedIn: boolean;
   public articles: Article[] = [];
+  public selectedCategory?: Category;
+  categories: Category[];
 
   private subscriptions = new Subscription();
 
@@ -30,6 +33,7 @@ export class ArticleListComponent implements OnInit, OnDestroy {
   ) {
     this.loggedIn = this.loginService.isLoggedIn();
     this.updateArticles();
+    this.categories = Object.values(Category);
   }
 
   ngOnInit() {
@@ -99,5 +103,9 @@ export class ArticleListComponent implements OnInit, OnDestroy {
     return this.articles.filter((option) =>
       option.title.toLowerCase().includes(filterValue)
     );
+  }
+
+  changeCategory(category: Category) {
+    this.selectedCategory = category;
   }
 }
