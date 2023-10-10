@@ -19,8 +19,9 @@ import { Category } from '../enums/category';
 })
 export class ArticleListComponent implements OnInit, OnDestroy {
   public loggedIn: boolean;
+  public chipSelected: boolean = false;
   public articles: Article[] = [];
-  public selectedCategory?: Category;
+  public selectedCategory: Category | 'All' = 'All';
   categories: Category[];
   searchText: string = '';
 

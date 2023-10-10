@@ -4,7 +4,9 @@
     class="category-chips"
     [(ngModel)]="selectedCategory"
   >
-    <mat-chip-option> All </mat-chip-option>
+    <mat-chip-option [selected]="selectedCategory === 'All'">
+      All
+    </mat-chip-option>
     <mat-chip-option *ngFor="let category of categories">
       {{ category }}
     </mat-chip-option>

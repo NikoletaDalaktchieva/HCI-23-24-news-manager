@@ -6,9 +6,9 @@ import { Category } from '../enums/category';
   name: 'category',
 })
 export class CategoryPipe implements PipeTransform {
-  transform(articles: Article[], category?: Category): Article[] {
+  transform(articles: Article[], category: Category | 'All'): Article[] {
     2;
-    if (category == undefined || category.toString() == 'All') {
+    if (category.toString() == 'All') {
       return articles;
     }
     return articles.filter((article) => article.category === category);
