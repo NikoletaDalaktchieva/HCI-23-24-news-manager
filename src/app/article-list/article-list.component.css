@@ -19,6 +19,13 @@
 
 .button-action {
   margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.button-card-actions {
+  margin-top: auto;
 }
 
 .search-form {
@@ -39,4 +46,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.category-chip {
+  margin-left: 5px;
 }
