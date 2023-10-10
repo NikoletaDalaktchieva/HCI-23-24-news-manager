@@ -43,6 +43,7 @@
       </mat-card-subtitle>
     </mat-card-header>
     <img
+      *ngIf="article.thumbnail_data"
       mat-card-image
       [src]="article | imageDecoder : true"
       class="article-header-image"
@@ -50,9 +51,7 @@
       style="cursor: pointer"
     />
     <mat-card-content>
-      <p>
-        {{ article.abstract }}
-      </p>
+      <p [innerHTML]="article.abstract"></p>
     </mat-card-content>
     <mat-card-actions>
       <button

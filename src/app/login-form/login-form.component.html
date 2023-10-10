@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-content>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.getRawValue())">
       <h2>Log In</h2>
       <!-- <mat-error *ngIf="!loginValid">
         The username and password were not recognized
@@ -8,8 +8,8 @@
       <mat-form-field>
         <input
           matInput
+          formControlName="username"
           placeholder="Username"
-          [(ngModel)]="username"
           name="username"
           required
         />
@@ -18,19 +18,15 @@
       <mat-form-field>
         <input
           matInput
+          formControlName="password"
           type="password"
           placeholder="Password"
-          [(ngModel)]="password"
           name="password"
           required
         />
         <mat-error> Password is required </mat-error>
       </mat-form-field>
-      <button
-        mat-raised-button
-        color="primary"
-        [disabled]="!loginForm.form.valid"
-      >
+      <button mat-raised-button color="primary" [disabled]="!loginForm.valid">
         Login
       </button>
     </form>

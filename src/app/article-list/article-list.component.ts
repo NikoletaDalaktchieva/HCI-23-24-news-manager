@@ -50,7 +50,10 @@ export class ArticleListComponent implements OnInit, OnDestroy {
 
   private updateArticles() {
     this.newsService.getArticles().subscribe({
-      next: (articles) => (this.articles = articles),
+      next: (articles) => {
+        this.articles = articles;
+        this.loggedIn = this.loginService.isLoggedIn();
+      },
     });
   }
 

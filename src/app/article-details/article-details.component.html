@@ -9,5 +9,5 @@
   class="article-header-image"
 />
 
-<h4>{{ article?.abstract }}</h4>
-<p>{{ article?.body }}</p>
+<h4 [innerHTML]="article?.abstract"></h4>
+<p [innerHTML]="article?.body"></p>
