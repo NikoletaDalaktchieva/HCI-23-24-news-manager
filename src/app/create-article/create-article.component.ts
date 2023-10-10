@@ -66,7 +66,7 @@ export class CreateArticleComponent {
     ).subscribe({
       next: () => {
         this.router.navigate(['/']);
-        this.snackBar.open('Article created: ' + article.title, '', {
+        this.snackBar.open(`Article created: ${article.title}`, '', {
           duration: 3000,
         });
       },

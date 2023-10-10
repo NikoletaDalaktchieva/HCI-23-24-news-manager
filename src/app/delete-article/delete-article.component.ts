@@ -24,7 +24,7 @@ export class DeleteArticleComponent {
     this.newsService.deleteArticle(this.article).subscribe({
       next: () => {
         this.eventDispatcherService.dispatch(AppEvent.ArticleDeleted);
-        this.snackBar.open('Article deleted: ' + this.article.title, '', {
+        this.snackBar.open(`Article deleted: ${this.article.title}`, '', {
           duration: 3000,
         });
         this.close();
