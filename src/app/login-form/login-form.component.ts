@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AppEvent } from '../enums/event';
 import { EventDispatcherService } from '../services/event-dispatcher.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
@@ -12,14 +13,20 @@ import { EventDispatcherService } from '../services/event-dispatcher.service';
 })
 export class LoginFormComponent implements OnInit, OnDestroy {
   private subscribtions = new Subscription();
-  public username = '';
-  public password = '';
+
+  loginForm: FormGroup;
 
   constructor(
     private loginService: LoginService,
     private eventDispatcherService: EventDispatcherService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
 
   ngOnInit() {
     this.eventDispatcherService.getEvent(AppEvent.LogIn)?.subscribe({
@@ -27,8 +34,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSubmit() {
-    this.loginService.login(this.username, this.password);
+  login(loginData: { username: string; password: string }) {
+    this.loginService.login(loginData.username, loginData.password);
   }
   ngOnDestroy() {
     this.subscribtions.unsubscribe();

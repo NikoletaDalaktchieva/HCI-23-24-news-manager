@@ -16,7 +16,7 @@ export class CreateArticleComponent {
 
   constructor(
     private router: Router,
-    formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private newsService: NewsService,
     private route: ActivatedRoute
   ) {
