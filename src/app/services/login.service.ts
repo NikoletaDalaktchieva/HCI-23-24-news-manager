@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { preserveWhitespacesDefault } from '@angular/compiler';
 import { EventDispatcherService } from './event-dispatcher.service';
 import { AppEvent } from '../enums/event';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,8 @@ export class LoginService {
 
   constructor(
     private http: HttpClient,
-    private eventDispatcherService: EventDispatcherService
+    private eventDispatcherService: EventDispatcherService,
+    private snackBar: MatSnackBar
   ) {}
 
   login(name: string, pwd: string) {
@@ -26,6 +28,11 @@ export class LoginService {
       next: (user) => {
         this.loggedIn = true;
         this.eventDispatcherService.dispatch(AppEvent.LogIn, user);
+      },
+      error: () => {
+        this.snackBar.open('Wrong username or password', '', {
+          duration: 15000,
+        });
       },
     });
   }
