@@ -34,13 +34,17 @@ export class ArticleListComponent implements OnInit, OnDestroy {
     );
   }
 
+  delete(article: Article) {
+    this.newsService.deleteArticle(article).subscribe({
+      next: () => this.updateArticles(),
+    });
+  }
+
   private updateArticles() {
     this.newsService.getArticles().subscribe({
       next: (articles) => (this.articles = articles),
     });
   }
-
-  remove(id: number | undefined) {}
 
   ngOnDestroy() {
     this.subscriptions.unsubscribe();

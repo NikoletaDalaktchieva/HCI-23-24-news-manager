@@ -23,6 +23,7 @@
       <button
         class="button-action"
         mat-raised-button
+        color="primary"
         routerLink="/articles/{{ article.id }}"
       >
         View
@@ -32,18 +33,20 @@
         *ngIf="loggedIn"
         class="button-action"
         mat-raised-button
+        color="accent"
         routerLink="/articles/edit/{{ article.id }}"
       >
         Edit
       </button>
 
       <button
-        *ngIf="loggedIn"
+        *ngIf="loggedIn && article.id"
         class="button-action"
+        color="warn"
         mat-raised-button
-        (click)="remove(article.id)"
+        (click)="delete(article)"
       >
-        Remove
+        Delete
       </button>
     </mat-card-actions>
   </mat-card>
