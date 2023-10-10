@@ -30,6 +30,7 @@ import { CreateArticleComponent } from './create-article/create-article.componen
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { DeleteArticleComponent } from './delete-article/delete-article.component';
 import { CategoryPipe } from './pipes/category.pipe';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CategoryPipe } from './pipes/category.pipe';
     ArticleDetailsComponent,
     DeleteArticleComponent,
     CategoryPipe,
+    SearchFilterPipe,
   ],
   imports: [
     FormsModule,
