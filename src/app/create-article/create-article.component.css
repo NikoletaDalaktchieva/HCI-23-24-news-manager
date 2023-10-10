@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .header {
@@ -34,4 +35,8 @@ mat-form-field {
 
 .button {
   margin-right: 10px;
+}
+
+.upload-button {
+  margin-bottom: 20px;
 }

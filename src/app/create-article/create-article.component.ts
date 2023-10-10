@@ -13,6 +13,7 @@ import { Category } from '../enums/category';
 export class CreateArticleComponent {
   articleForm: FormGroup;
   categories: Category[];
+  imageName = '';
 
   constructor(
     private router: Router,
@@ -20,13 +21,15 @@ export class CreateArticleComponent {
     private newsService: NewsService,
     private route: ActivatedRoute
   ) {
-    this.articleForm = formBuilder.group({
+    this.articleForm = this.formBuilder.group({
       id: [null],
       title: [''],
       subtitle: [''],
       category: [''],
       abstract: [''],
       body: [''],
+      image_data: [null],
+      image_media_type: [null],
     });
 
     this.categories = Object.values(Category);
@@ -47,19 +50,34 @@ export class CreateArticleComponent {
           category: article.category,
           abstract: article.abstract,
           body: article.body,
+          image_data: [null],
+          image_media_type: [null],
         });
       },
     });
   }
 
   saveArticle(article: Article) {
-    console.log(article);
-
     (article.id
       ? this.newsService.updateArticle(article)
       : this.newsService.createArticle(article)
     ).subscribe({
       next: () => this.router.navigate(['/']),
     });
+  }
+
+  onImageUploaded(event: any) {
+    const file: File = event.target.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      const result = fileReader.result?.toString();
+      this.articleForm.controls['image_data'].setValue(
+        result?.substring(result.indexOf(',') + 1)
+      );
+    };
+    fileReader.readAsDataURL(file);
+
+    this.articleForm.controls['image_media_type'].setValue(file.type);
+    this.imageName = file.name;
   }
 }

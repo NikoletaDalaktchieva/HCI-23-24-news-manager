@@ -24,7 +24,19 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <br />
+
+    <input hidden type="file" (change)="onImageUploaded($event)" #imageUpload />
+    <div class="upload-button">
+      <button
+        type="button"
+        mat-raised-button
+        color="accent"
+        (click)="imageUpload.click()"
+      >
+        Upload
+      </button>
+      <mat-label> {{ imageName || "No File Uploaded" }} </mat-label>
+    </div>
 
     <mat-form-field>
       <mat-label>Abstract</mat-label>
@@ -38,7 +50,7 @@
     <br />
 
     <button type="submit" class="button" mat-raised-button color="primary">
-      Create
+      Save
     </button>
     <button
       type="submit"

@@ -59,11 +59,6 @@ export class ArticleListComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(DeleteArticleComponent, {
       data: article,
     });
-
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   console.log('The dialog was closed');
-    //   this.animal = result;
-    // });
   }
 
   private updateArticles() {

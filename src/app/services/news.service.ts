@@ -50,19 +50,15 @@ export class NewsService {
   }
 
   getArticle(id: number): Observable<Article> {
-    console.log('Requesting article id=' + id);
     const url = `${this.articleUrl}/${id}`;
     return this.http.get<Article>(url, this.httpOptions);
   }
 
   updateArticle(article: Article): Observable<Article> {
-    console.log('Updating article id=' + article.id);
     return this.http.post<Article>(this.articleUrl, article, this.httpOptions);
   }
 
   createArticle(article: Article): Observable<Article> {
-    console.log('Creating article');
-    console.log(article);
     return this.http.post<Article>(this.articleUrl, article, this.httpOptions);
   }
 
