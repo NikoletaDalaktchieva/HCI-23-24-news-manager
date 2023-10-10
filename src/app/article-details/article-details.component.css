@@ -9,3 +9,9 @@
   margin-right: auto;
   display: block;
 }
+
+.metadata-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

@@ -11,3 +11,8 @@
 
 <h4 [innerHTML]="article?.abstract"></h4>
 <p [innerHTML]="article?.body"></p>
+
+<div class="metadata-container">
+  <span> Author: {{ article?.username }} </span>
+  <span> Updated at: {{ article?.update_date }}</span>
+</div>

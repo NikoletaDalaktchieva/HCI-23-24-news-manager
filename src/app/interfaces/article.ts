@@ -7,6 +7,7 @@ export interface Article {
   category: Category;
   abstract: string;
   body?: string;
+  username?: string;
   update_date?: Date;
   image_data?: string;
   image_media_type?: string;
