@@ -95,7 +95,6 @@ export class ArticleListComponent implements OnInit, OnDestroy {
   }
 
   private _filter(title: string): Article[] {
-    console.log(title);
     const filterValue = title.toLowerCase();
 
     return this.articles.filter((option) =>
