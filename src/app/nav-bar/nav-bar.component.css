@@ -1,8 +1,11 @@
 mat-toolbar {
   position: sticky;
-  position: -webkit-sticky; /* For macOS/iOS Safari */
-  top: 0; /* Sets the sticky toolbar to be on top */
-  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+  position: -webkit-sticky;
+  /* For macOS/iOS Safari */
+  top: 0;
+  /* Sets the sticky toolbar to be on top */
+  z-index: 1000;
+  /* Ensure that your app's content doesn't overlap the toolbar */
 }
 
 .example-fill-remaining-space {
@@ -35,26 +38,3 @@ mat-toolbar {
   font-size: 15px;
   margin-right: 10px;
 }
-
-/* TODO remove */
-/* 
-@media screen and (min-width: 1000px) {
-  #small-screen {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  #big-screen {
-    display: none;
-  }
-
-  #small-screen {
-    background-color: #683cb4;
-    text-align: center;
-  }
-
-  .search {
-    width: 85%;
-  }
-} */
