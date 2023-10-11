@@ -16,25 +16,11 @@
     <mat-form-field class="search-field">
       <mat-label>Search by Article title</mat-label>
       <input
-        [(ngModel)]="searchText"
         class="search-input"
         type="text"
         matInput
-        [formControl]="myControl"
-        [matAutocomplete]="auto"
+        [formControl]="searchControl"
       />
-      <mat-autocomplete
-        #auto="matAutocomplete"
-        [displayWith]="displayFn"
-        (optionSelected)="setSearchText($event.option.value)"
-      >
-        <mat-option
-          *ngFor="let option of filteredOptions | async"
-          [value]="option"
-        >
-          {{ option.title }}
-        </mat-option>
-      </mat-autocomplete>
     </mat-form-field>
   </form>
 </div>
@@ -43,7 +29,7 @@
   <mat-card
     *ngFor="
       let article of articles
-        | searchFilter : searchText
+        | searchFilter : searchControl.value || ''
         | category : selectedCategory
     "
     class="article"

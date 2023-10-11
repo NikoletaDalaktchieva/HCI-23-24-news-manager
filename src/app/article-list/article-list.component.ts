@@ -18,12 +18,12 @@ import { Category } from '../enums/category';
   styleUrls: ['./article-list.component.css'],
 })
 export class ArticleListComponent implements OnInit, OnDestroy {
-  public loggedIn: boolean;
-  public chipSelected: boolean = false;
-  public articles: Article[] = [];
-  public selectedCategory: Category | 'All' = 'All';
+  loggedIn: boolean;
+  chipSelected: boolean = false;
+  articles: Article[] = [];
+  selectedCategory: Category | 'All' = 'All';
   categories: Category[];
-  searchText: string = '';
+  searchControl = new FormControl<string>('');
 
   private subscriptions = new Subscription();
 
@@ -40,7 +40,7 @@ export class ArticleListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadArtciles();
-    this.filterInit();
+    // this.filterInit();
   }
 
   loadArtciles() {
@@ -72,40 +72,27 @@ export class ArticleListComponent implements OnInit, OnDestroy {
     });
   }
 
+  // // Seatch filtering by title
+  // filteredOptions?: Observable<Article[]>;
+
+  // filterInit() {
+  //   this.filteredOptions = this.myControl.valueChanges.pipe(
+  //     startWith(''),
+  //     map((value) => {
+  //       const title = typeof value === 'string' ? value : value?.title;
+  //       return title ? this._filter(title as string) : this.articles.slice();
+  //     })
+  //   );
+  // }
+  // private _filter(title: string): Article[] {
+  //   const filterValue = title.toLowerCase();
+
+  //   return this.articles.filter((option) =>
+  //     option.title.toLowerCase().includes(filterValue.toLowerCase())
+  //   );
+  // }
+
   ngOnDestroy() {
     this.subscriptions.unsubscribe();
-  }
-
-  // Seatch filtering by title
-  myControl = new FormControl<string | Article>('');
-  filteredOptions?: Observable<Article[]>;
-
-  filterInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => {
-        const title = typeof value === 'string' ? value : value?.title;
-        return title ? this._filter(title as string) : this.articles.slice();
-      })
-    );
-  }
-
-  displayFn(article: Article): string {
-    return article && article.title ? article.title : '';
-  }
-
-  private _filter(title: string): Article[] {
-    const filterValue = title.toLowerCase();
-
-    return this.articles.filter((option) =>
-      option.title.toLowerCase().includes(filterValue.toLowerCase())
-    );
-  }
-
-  changeCategory(category: Category) {
-    this.selectedCategory = category;
-  }
-  setSearchText(article: Article) {
-    this.searchText = article.title;
   }
 }

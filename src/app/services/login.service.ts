@@ -31,7 +31,7 @@ export class LoginService {
       },
       error: () => {
         this.snackBar.open('Wrong username or password', '', {
-          duration: 15000,
+          duration: 3000,
         });
       },
     });
