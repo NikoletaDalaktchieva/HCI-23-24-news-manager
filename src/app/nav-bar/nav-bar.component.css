@@ -14,26 +14,6 @@ mat-toolbar {
   flex: 1 1 auto;
 }
 
-.search {
-  width: 50%;
-  padding: 10px 25px 10px;
-  background: url("search-icon.png") no-repeat 5px;
-  background-size: 15px;
-  background-color: #8662c3;
-  border: transparent;
-  border-radius: 10px;
-  color: white;
-  outline: none !important;
-}
-
-.search:hover {
-  background-color: #7858af;
-}
-
-::placeholder {
-  color: #d1c4e8;
-}
-
 #name {
   font-size: 15px;
   margin-right: 10px;
