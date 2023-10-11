@@ -79,6 +79,7 @@
       <h2>{{ articleForm.get("subtitle")?.value }}</h2>
       <h3>{{ articleForm.get("category")?.value }}</h3>
       <img
+        *ngIf="articleForm.get('image_data')?.value"
         [src]="articleForm.getRawValue() | imageDecoder"
         class="article-header-image"
       />
