@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
-import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { preserveWhitespacesDefault } from '@angular/compiler';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { EventDispatcherService } from './event-dispatcher.service';
 import { AppEvent } from '../enums/event';
 import { MatSnackBar } from '@angular/material/snack-bar';
